@@ -1,0 +1,24 @@
+spring:
+  datasource:
+    #   数据源基本配置
+    username: root
+    password: 333
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/db01?useUnicode=true&characterEncoding=utf8&rewriteBatchedStatements=true&allowMultiQueries=true
+    # 是否执行初始化sql脚本
+    initialization-mode: always
+    schema:
+      - classpath:sql/department.sql
+      - classpath:sql/employee.sql
+  redis:
+    host: localhost
+    port: 6379
+    cache-expire:
+      dept: 100s
+      emp: 200s
+mybatis:
+  # 指定全局配置文件位置
+  config-location: classpath:mybatis/mybatis-config.xml
+  # 指定sql映射文件位置
+  mapper-locations: classpath:mybatis/mapper/*.xml
+debug: false
